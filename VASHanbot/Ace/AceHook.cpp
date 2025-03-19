@@ -1,0 +1,115 @@
+#include "AceHook.h"
+#include "libs/detours/detours.h"
+#include <cstdint>
+
+ace_hook::~ace_hook()
+{
+	if(hi.detour)
+	{
+		VirtualFree((LPVOID)hi.detour, 0, MEM_RELEASE);
+	}
+}
+
+bool ace_hook::install(uintptr_t pointer_ptr, AceCallBack detour)
+{
+
+
+	BYTE shellCode[] = {
+	0x54, 0x50, 0x53, 0x51, 0x52, 0x55, 0x56, 0x57, 0x41, 0x50, 0x41,0x51, 0x41, 0x52, 0x41, 0x53,
+	0x41, 0x54, 0x41, 0x55, 0x41, 0x56, 0x41, 0x57, 0x9C, 0x48, 0x83,0xEC, 0x40, 0x0F, 0x11, 0x44,
+	0x24, 0x30, 0x0F, 0x11, 0x4C, 0x24, 0x20, 0x0F, 0x11, 0x54, 0x24,0x10, 0x0F, 0x11, 0x1C, 0x24,
+	0x48, 0xC7, 0xC0, 0x00, 0x00, 0x00, 0x00, 0x50, 0x48, 0xC7, 0xC0,0x00, 0x00, 0x00, 0x00, 0x50,
+	0x48, 0x8D, 0x0C, 0x24, 0x48, 0x83, 0xEC, 0x20, 0x48, 0xB8, 0x00,0x00, 0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0xFF, 0xD0, 0x48, 0x83, 0xC4, 0x20, 0x48, 0x83, 0xC4,0x10, 0x0F, 0x10, 0x1C, 0x24,
+	0x0F, 0x10, 0x54, 0x24, 0x10, 0x0F, 0x10, 0x4C, 0x24, 0x20, 0x0F,0x10, 0x44, 0x24, 0x30, 0x48,
+	0x83, 0xC4, 0x40, 0x9D, 0x41, 0x5F, 0x41, 0x5E, 0x41, 0x5D, 0x41,0x5C, 0x41, 0x5B, 0x41, 0x5A,
+	0x41, 0x59, 0x41, 0x58, 0x5F, 0x5E, 0x5D, 0x5A, 0x59, 0x5B, 0x58,0x5C ,0x50, 0x48, 0xA1, 0x00,
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x48, 0x87, 0x04, 0x24, 0xC3
+	};
+
+
+	LONG status;
+	if ((status = DetourTransactionBegin()) == NO_ERROR) {
+		if ((status = DetourUpdateThread(::GetCurrentThread())) == NO_ERROR) {
+
+			
+			
+			hi.pointer_ptr = pointer_ptr;
+			LPVOID buffer = VirtualAlloc(0, 0x1000, MEM_COMMIT,  PAGE_EXECUTE_READWRITE);
+			if ((status = DetourAttach((PVOID*)&hi.pointer_ptr, buffer)) == NO_ERROR) {
+
+		
+				memcpy(buffer, shellCode, sizeof(shellCode));
+				memcpy((LPVOID)((uintptr_t)buffer + 0x4a), &detour, sizeof(uintptr_t));
+				if (!func_hook)
+				{
+					*(BYTE*)((uintptr_t)buffer + 71) = 0x28;
+					*(BYTE*)((uintptr_t)buffer + 87) = 0x28;
+
+				}
+				hi.detour = (uintptr_t)buffer;
+				hi.hook = pointer_ptr;
+				if ((status = DetourTransactionCommit()) == NO_ERROR) {
+					hi.org = &hi.pointer_ptr;
+					memcpy((LPVOID)((uintptr_t)buffer + 0x8f), &hi.org, sizeof(uintptr_t));
+					return true;
+				}
+			}
+		}
+		DetourTransactionAbort();
+	}
+	::SetLastError(status);
+	return false;
+
+}
+
+bool ace_hook::vmt_hook(uintptr_t address, AceCallBack call_back_func)
+{
+
+	for (;;)
+	{
+		if (*(BYTE*)address != 0xe8)
+		{
+			break;
+		}
+
+		int32_t offset = *(int32_t*)(address + 1);
+		uint64_t target = address + offset + 5;
+		if (*(BYTE*)(target + 0x45) != 0x48)
+		{
+			break;
+		}
+
+		AceHookInfo* ptr = (AceHookInfo*)*(uintptr_t*)(target + 0x47);
+		vmt_orgfunc = (AceCallBack)ptr->HookChain->Next->HookHandler;
+		ptr->HookChain->Next->HookHandler = call_back_func;
+
+		return true;
+	}
+
+	return false;
+
+}
+
+bool ace_hook::uninstall()
+{
+	if (!hi.detour) {
+		::SetLastError(ERROR_INVALID_HANDLE);
+		return false;
+	}
+	LONG status;
+	if ((status = DetourTransactionBegin()) == NO_ERROR) {
+		if ((status = DetourUpdateThread(::GetCurrentThread())) == NO_ERROR) {
+			if ((status = DetourDetach((PVOID*)&hi.pointer_ptr, (PVOID)hi.detour)) == NO_ERROR) {
+				*hi.org = hi.hook;
+				if ((status = DetourTransactionCommit()) == NO_ERROR) {
+				
+					return true;
+				}
+			}
+		}
+		DetourTransactionAbort();
+	}
+	::SetLastError(status);
+	return false;
+}
